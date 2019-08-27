@@ -4,12 +4,6 @@ import pymssql
 
 f = open("userpass.txt","r")
 contents = f.read().splitlines()
-usernameFile = contents[0]
-passwordFile = contents[1] 
-for row in contents:
-    print(row)
-# print(usernameFile)
-# print(passwordFile)
 #Epicor Connection
 conn = pymssql.connect(server="iagaepicorsql",port=1433, user=contents[0], password=contents[1], database="epicor10")
 cursor = conn.cursor()
@@ -136,10 +130,6 @@ def sqlQuery(partNumber):
     shipQtys = []
     issueQtys = []
     actComplete = []
-    # laborUnitCosts = []
-    # burdenUnitCosts = []
-    # materialUnitCosts = []
-    # opUnitCosts = []
     
     #Get Price
     cursor.execute("SELECT UnitPrice FROM Erp.InvcDtl WHERE partNum = '{}' AND ShipDate >= '{}' ORDER BY ShipDate".format(partNumber,startDate))
