@@ -5,7 +5,7 @@ import pymssql
 f = open("userpass.txt","r")
 contents = f.read().splitlines()
 #Epicor Connection
-conn = pymssql.connect(server="iagaepicorsql",port=1433, user=contents[0], password=contents[1], database="epicor10")
+conn = pymssql.connect(server=contents[0],port=1433, user=contents[1], password=contents[2], database="epicor10")
 cursor = conn.cursor()
 #Query Start Date
 startDate = "2019-01-01"
